@@ -1,0 +1,37 @@
+version: '2.2'
+services:
+  front:
+    extends:
+      file: ./common.yml
+      service: front
+    ports:
+      - 80:80
+    depends_on:
+      - section
+    image: front-service
+  section:
+    extends:
+      service: section
+      file: ./common.yml
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    image: section-service
+  db:
+    extends:
+      service: db
+      file: ./common.yml
+    ports:
+      - 5433:5432
+    volumes:
+      - service_section_pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=section
+      - POSTGRES_PASSWORD=section
+      - POSTGRES_DB=section
+
+
+volumes:
+  service_section_pg_data:
+  service_files_files:

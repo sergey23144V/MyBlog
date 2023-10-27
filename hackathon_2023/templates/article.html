@@ -1,0 +1,42 @@
+{{define "articles"}}
+
+{{template "head" }}
+
+<body>
+{{template "header_for_articlePage" }}
+<main class="container">
+    <div class="card text-center mt-4" style="background: {{.Article.Theme.Color }}">
+        <div class="row p-3">
+            <div class="col-md-5">
+                <img src="{{.Article.ImgFile.Path}}" alt="Img" class="card-img-bottom border rounded">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body text-start">
+                    <h2 class="card-title">{{ .Article.Title }}</h2>
+                    <p class="card-text fst-italic">{{ .Article.PublicationDate  }}</p>
+                    <h3 class="card-text">{{ .Article.Subtitle }}</h3>
+                    <div class="img-fluid">
+                        {{ .Article.Content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3">
+                <img src="{{ .Article.QRCode }}" alt="QR Code" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function() {
+        // Найти изображения в тексте и добавить к ним класс
+        $('img').addClass('img-fluid');
+    });
+</script>
+
+{{template "footer" }}
+{{end}}
+

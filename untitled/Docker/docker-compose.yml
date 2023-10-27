@@ -1,0 +1,13 @@
+version: '2.2'
+services:
+  app:
+    image:
+      web-post
+    build:
+      context: ../
+      dockerfile: Docker/Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=development
+

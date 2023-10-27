@@ -1,0 +1,21 @@
+version: '2.2'
+services:
+  section:
+    build:
+      context: ../..
+      dockerfile: Docker/run/Dockerfile
+    environment:
+      - DB_URL=jdbc:postgresql://db:5432/section
+      - PORT=8000
+
+  db:
+    image: postgres:10.5-alpine
+    environment:
+      - POSTGRES_USER=section
+      - POSTGRES_PASSWORD=section
+      - POSTGRES_DB=section
+    volumes:
+      - service_section_pg_data:/var/lib/postgresql/data
+
+volumes:
+  service_loyalty_pg_data:
