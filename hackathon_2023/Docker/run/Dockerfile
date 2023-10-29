@@ -13,6 +13,8 @@ COPY ./configs /articles-service/configs
 # Копируем файлы проекта и выполняем сборку
 COPY ./go.mod ./go.sum ./
 
+RUN go env -w GOPROXY=https://goproxy.io
+
 RUN go mod download
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o articles  github.com/zhashkevych/todo-app/cmd/
