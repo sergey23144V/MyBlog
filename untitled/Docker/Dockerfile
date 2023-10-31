@@ -1,9 +1,8 @@
 FROM node:21-alpine3.17 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install -g npm@10.2.1
+RUN npm install
 COPY . .
-ENV NODE_OPTIONS=--max-old-space-size=4096
 RUN npm run build
 
 
