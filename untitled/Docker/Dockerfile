@@ -1,7 +1,7 @@
-FROM node:21-alpine3.17 as build-stage
+FROM 18-alpine3.17 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install package-name@9.7.2
 COPY . .
 RUN npm run build -- --max-old-space-size=4096
 
