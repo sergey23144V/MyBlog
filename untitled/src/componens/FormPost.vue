@@ -29,7 +29,7 @@ export default {
   methods:{
     Imeg(){
       const element = document.getElementById(this.post.id);
-      const imageUrl = `http://localhost:8000${this.post.imgFile.Path}`;
+      const imageUrl = `http://46.17.46.89:8000${this.post.imgFile.Path}`;
 
       const image = new Image();
       image.src = imageUrl;

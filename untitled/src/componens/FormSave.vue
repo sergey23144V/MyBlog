@@ -138,7 +138,7 @@ export default {
         formData.append("image", this.post.imeg);
         formData.append("theme", this.post.selectedItemId);
 
-        const response = await axios.post("http://localhost:8000/articles/", formData)
+        const response = await axios.post("http://46.17.46.89:8000/articles/", formData)
         console.log(response)
         }
       // }catch (e){

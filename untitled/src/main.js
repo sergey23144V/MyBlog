@@ -8,7 +8,7 @@ import {QuillEditor} from "@vueup/vue-quill";
 
 const app = createApp(App);
 
-App.config.maxHandlers = 15;
+
 
 app
     // .component("ImageResize", ImageResize)
