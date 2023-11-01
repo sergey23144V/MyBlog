@@ -22,7 +22,7 @@ export default {
     },
     async GetPost(){
       try {
-        const  response = await axios.get("http://46.17.46.89:8000/articles/")
+        const  response = await axios.get("http://localhost:8000/articles/")
         this.posts = response.data
       }catch (e){
         alert("Не получилось")

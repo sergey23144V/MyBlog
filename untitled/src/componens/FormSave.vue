@@ -37,6 +37,7 @@
         <button @click="Save" class="block  h-10 max-w-1/3 px-4 my-4 m-auto font-semi-bold text-sm bg-fuchsia-600 text-white rounded-md shadow-sm hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 ease-in-out delay-150 duration-300, border-0">
           Сохранить пост
         </button>
+     <my-dialog v-model:show="show" v-model:qrcode="QRCode" v-model:url="url"></my-dialog>
       </div>
     </div>
   </div>
@@ -49,6 +50,7 @@ import {Quill, QuillEditor} from "@vueup/vue-quill";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import axios from "axios";
 import MyCombobox from "@/componens/MyCombobox.vue";
+import MyDialog from "@/componens/MyDialog.vue";
 
 
 
@@ -57,6 +59,7 @@ export default {
 
   },
   components:{
+    MyDialog,
     MyCombobox,
     QuillEditor,
 
@@ -111,12 +114,16 @@ export default {
       },
       selectedItem: {},
       currentDate: new Date(),
+      show: false,
+      url: "",
+      QRCode: "",
     }
   },
 
   methods:{
     async Save(){
-      // try {
+
+      try {
       const quill = new Quill("#editor", {
         // настройки Quill
       });
@@ -138,12 +145,15 @@ export default {
         formData.append("image", this.post.imeg);
         formData.append("theme", this.post.selectedItemId);
 
-        const response = await axios.post("http://46.17.46.89:8000/articles/", formData)
+        const response = await axios.post("http://localhost:8000/articles/", formData)
         console.log(response)
+          this.url = response.data.Url
+          this.QRCode = response.data.Article.QRCode
+          this.show = true
         }
-      // }catch (e){
-      //   alert("Не получилось")
-      // }
+      }catch (e){
+        alert("Не получилось")
+      }
     },
     formattedDate() {
       const day = this.currentDate.getDate();

@@ -22,9 +22,9 @@
 
 import {defineComponent} from "vue";
 import MyCombobox from "@/componens/MyCombobox.vue";
+import MyDialog from "@/componens/MyDialog.vue";
 
 export default defineComponent({
-  components: {MyCombobox}
 })
 </script>
 

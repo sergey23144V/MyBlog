@@ -43,13 +43,13 @@ export default {
   methods:{
     async GetPostById(){
       try {
-        const  response = await axios.get(`http://46.17.46.89:8000/articles/${this.$route.params.id}`)
+        const  response = await axios.get(`http://localhost:8000/articles/${this.$route.params.id}`)
         this.postItem = response.data
         const element = document.getElementById("img");
         const bodyItem = document.getElementById("bodyItem");
         bodyItem.style.backgroundColor = this.postItem.theme.color
 
-        const imageUrl = `http://46.17.46.89:8000` + this.postItem.imgFile.Path;
+        const imageUrl = `http://localhost:8000` + this.postItem.imgFile.Path;
         const image = new Image();
 
         element.src = `${imageUrl}`;
